@@ -29,6 +29,7 @@ public class Usuario {
     private String senha;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "departamento_fk")
     private Departamento departamento;
 
     @NotNull

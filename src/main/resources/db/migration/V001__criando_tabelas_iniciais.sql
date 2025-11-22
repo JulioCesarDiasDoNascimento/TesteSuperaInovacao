@@ -1,14 +1,14 @@
-create table departamento (
+create table if not exists departamento (
     id serial primary key,
     nome varchar(255) not null
 );
 
-create table modulo (
+create table if not exists modulo (
     id serial primary key,
     nome varchar(255) not null
 );
 
-create table usuario (
+create table if not exists usuario (
     id serial primary key,
     nome varchar(255) not null,
     email varchar(255) not null unique,
@@ -17,19 +17,19 @@ create table usuario (
     validade_modulo date
 );
 
-create table permissao (
+create table if not exists permissao (
     departamento_fk integer not null references departamento (id),
     modulo_fk integer not null references modulo (id),
     primary key (departamento_fk, modulo_fk)
 );
 
-create table usuario_modulos (
+create table if not exists usuario_modulos (
     usuario_fk integer not null references usuario (id),
     modulo_fk integer not null references modulo (id),
     primary key (usuario_fk, modulo_fk)
 );
 
-create table solicitacao (
+create table if not exists solicitacao (
     id serial primary key,
     usuario_fk integer not null references usuario (id),
     modulo_fk integer not null references modulo (id),
